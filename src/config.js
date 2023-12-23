@@ -1,33 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+export const IMG_CDN_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
-const Title = () => (
-  <a href="/">
-    <img
-      className="log"
-      src="https://lh3.googleusercontent.com/Em7AHf7XBH_RtGfCBVXz9RH8SM_pHkj3xPP-yd3cRguY1_Jc8fmqgx6WxnvGVyPV5xs5gL3HCD0FCuv6Xo4CwoY6ak4=w256-rw"
-      alt="logo"
-    />
-  </a>
-);
-
-const Header = () => {
-  return (
-    <div className="header">
-      <Title />
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const restaruantList = [
+export const restaruantList = [
   {
     info: {
       id: "23945",
@@ -1719,50 +1693,3 @@ const restaruantList = [
     },
   },
 ];
-const BurgerKing = {
-  name: "Burger King",
-  image:
-    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e33e1d3ba7d6b2bb0d45e1001b731fcf",
-  cusine: ["burger", "Amercian"],
-  rating: "4.2",
-};
-console.log(restaruantList[1].info.sla.lastMileTravelString);
-const RestrauantCard = ({ data }) => {
-  return (
-    <div className="card">
-      <img
-        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${data.info?.cloudinaryImageId}`}
-      />
-      <h2>{data.info?.name}</h2>
-      <h3>{data.info?.cuisines.join(", ")}</h3>
-      <h4>{data.info?.sla.lastMileTravelString} kms</h4>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="restaruant-list">
-      {restaruantList.map((data, i) => (
-        <RestrauantCard data={data} />
-      ))}
-    </div>
-  );
-};
-
-const Footer = () => {
-  return <h4>Footer</h4>;
-};
-
-const Applayout = () => {
-  return (
-    <div>
-      <Header />
-      <Body />
-      <Footer />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Applayout />);
