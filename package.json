@@ -4,7 +4,9 @@
   "description": "this is a online booking app",
   "main": "App.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "npx parcel index.html",
+    "build": "npx parcel build index.html"
   },
   "author": "Amit paul",
   "license": "ISC",
