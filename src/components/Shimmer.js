@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
 
 const Shimmer = () => {
   return (
-    <h1>Shimmer loading..........</h1>
-  )
-}
+    <div className="restaruant-list">
+      {Array(10)
+        .fill("")
+        .map((e,index ) => (
+          <div className="shimmercard" key={index}></div>
+        ))}
+    </div>
+  );
+};
 
-export default Shimmer
+export default Shimmer;

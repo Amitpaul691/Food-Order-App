@@ -1,32 +1,43 @@
-import { useState } from "react";
-
-const loginUser = () => {
-  return true;
-};
+import { useEffect, useState } from "react";
+import Logo from "../assets/img/foodvilla.png";
+import { Link } from "react-router-dom";
+import useOnline from "../utils/useonline";
 
 const Title = () => (
   <a href="/">
-    <img
-      className="log"
-      src="https://lh3.googleusercontent.com/Em7AHf7XBH_RtGfCBVXz9RH8SM_pHkj3xPP-yd3cRguY1_Jc8fmqgx6WxnvGVyPV5xs5gL3HCD0FCuv6Xo4CwoY6ak4=w256-rw"
-      alt="logo"
-    />
+    <img className="log" src={Logo} alt="logo" />
   </a>
 );
 
 const Header = () => {
   const [isoggedIn, setIsLoggedIn] = useState(false);
+
+  const isOnline = useOnline();
+  useEffect(() => {
+    // console.log("useeffect");
+  }, []);
+
   return (
-    <div className="header">
+    <div className="flex justify-between">
       <Title />
-      <div className="nav-items">
+      <div className="flex ">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
           <li>Cart</li>
+          <li>
+            <Link to="/instamart">Instamart</Link>
+          </li>
         </ul>
       </div>
+      <h1>{isOnline ? "✅" : "🔴"}</h1>
       {isoggedIn ? (
         <button
           onClick={() => {

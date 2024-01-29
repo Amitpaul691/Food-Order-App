@@ -1,28 +1,64 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import Error from "./components/Error";
+import Contact from "./components/Contact";
+import RestrauntMenu from "./components/RestrauntMenu";
+import Shimmer from "./components/Shimmer";
 
-const BurgerKing = {
-  name: "Burger King",
-  image:
-    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e33e1d3ba7d6b2bb0d45e1001b731fcf",
-  cusine: ["burger", "Amercian"],
-  rating: "4.2",
-};
-
-
+const Instamart = lazy(() => import("./components/Instamart"));
+const About = lazy(() => import("./components/About"));
 
 const Applayout = () => {
   return (
     <div>
       <Header />
-      <Body />
+      <Outlet />
       <Footer />
     </div>
   );
 };
 
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Applayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restruant/:id",
+        element: <RestrauntMenu />,
+      },
+      {
+        path: "/instamart",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Instamart />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Applayout />);
+root.render(<RouterProvider router={appRouter} />);

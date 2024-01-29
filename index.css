@@ -1,4 +1,4 @@
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
   margin: 10px;
@@ -33,3 +33,18 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.shimmercard {
+  width: 200px;
+  height: 200px;
+  background: lightgrey;
+  margin: 20px;
+}
+
+.menu {
+  display: flex;
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
