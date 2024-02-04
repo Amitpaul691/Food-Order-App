@@ -3,6 +3,8 @@ import Logo from "../assets/img/foodvilla.png";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useonline";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+import store from "../utils/store";
 
 const Title = () => (
   <a href="/">
@@ -16,6 +18,8 @@ const Header = () => {
   const isOnline = useOnline();
 
   const { user } = useContext(UserContext);
+
+  const cartItems = useSelector(store=>store.cart.items);
   console.log(user);
   useEffect(() => {
     // console.log("useeffect");
@@ -35,10 +39,14 @@ const Header = () => {
           <li className="px-2">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="px-2">Cart</li>
           <li className="px-2">
             <Link to="/instamart">Instamart</Link>
           </li>
+          <li className="px-2">
+            <Link to="/cart" className="px-2">
+            Cart-{cartItems.length} items
+            </Link>
+            </li>
         </ul>
       </div>
       <h1>{isOnline ? "✅" : "🔴"}</h1>

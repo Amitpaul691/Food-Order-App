@@ -11,11 +11,8 @@ const useRestaurant = (resId) => {
   const getRestruantInfo = async () => {
     const data = await fetch(`${MENU_API}${resId}`);
     const json = await data.json();
-    setRestaurant(json.data?.cards[0]?.card?.card?.info);
-    setRestaurantMenu(
-      json.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.itemCards
-    );
+
+    setResInfo(json.data);
   };
   return resInfo;
 };

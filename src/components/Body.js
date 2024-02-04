@@ -40,9 +40,9 @@ const Body = () => {
     return <h1>offline,please check your internet connection!!</h1>;
   }
 
-  if (!allRestaruants) return null;
+  // if (!allRestaruants) return null;
 
-  return filterRestaruants.length === 0 ? (
+  return allRestaruants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className=" ">
@@ -75,7 +75,7 @@ const Body = () => {
       <div className="flex flex-wrap">
         {filterRestaruants.map((data, i) => (
           <Link to={`/restruant/${data?.info?.id}`} key={data?.info?.id}>
-            <RestrauantCard data={data} />
+            <RestrauantCard {...data?.info} />
           </Link>
           // <RestrauantCard {...data.info} /> we can try this also
         ))}
